@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script>
+      const evtSource = new EventSource('http://localhost:3000');
+      
+      evtSource.addEventListener('ping', ({ data }) => {
+        const selector = document.querySelector('#sse');
+        const { time } = JSON.parse(data);
+        selector.innerHTML = time;
+      });
+    </script>
+  </head>
+  <body>
+    <span>Testing sse</span>
+    <br />
+    <div id="sse"></div>
+  </body>
+</html>
